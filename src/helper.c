@@ -39,12 +39,13 @@ void decrypter(unsigned char *input , unsigned char *output, DWORD len){
 	
 	while(i < len)
 	{
-			*(output+i) = *(input+i) ^ key[j];
+	   *(output+i) = *(input+i) ^ key[j];
 			
-			if(j == 30){
-				j = 1;
-				continue;
-			}
+	    if(j == 30)
+	    {
+		j = 1;
+		continue;
+	    }
 			
 		i++;
 		j++;
@@ -63,8 +64,8 @@ DWORD getPasswordLen(unsigned char fileBuffer[], DWORD fileSize){
 	
 	if(address == NULL)
 	{
-		MessageBox(NULL,"Magic bytes not found, cannot get password length!","Error", MB_OK | MB_ICONERROR);
-		return 0;
+	  MessageBox(NULL,"Magic bytes not found, cannot get password length!","Error", MB_OK | MB_ICONERROR);
+	  return 0;
 	}
 		
 	address-=0x28;
@@ -83,8 +84,8 @@ unsigned char *searchbytes(unsigned char fileBuffer[], unsigned char magic_bytes
 	
 	for (i = 0; i < fileSize; i++){
 		
-		if(memcmp(magic_bytes,fileBuffer,numOfBytes) == 0)
-			return fileBuffer;
+	if(memcmp(magic_bytes,fileBuffer,numOfBytes) == 0)
+	   return fileBuffer;
 		
 		
 	   fileBuffer++;
